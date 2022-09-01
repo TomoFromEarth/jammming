@@ -16,6 +16,8 @@ export class SearchBar extends React.Component {
 
     search() {
         this.props.onSearch(Spotify.search);
+        console.log(this.props.onSearch(Spotify.search))
+        console.log(`this is a message`)
     }
 
     handleTermChange(event) {
@@ -27,7 +29,8 @@ export class SearchBar extends React.Component {
             <div className="SearchBar">
                 <input placeholder="Enter A Song, Album, or Artist" 
                        onChange={this.handleTermChange} />
-                <button className="SearchButton" onClick={this.search}>SEARCH</button>
+                <button className="SearchButton"
+                        onClick={this.search}>SEARCH</button>
             </div>
         )
     }
