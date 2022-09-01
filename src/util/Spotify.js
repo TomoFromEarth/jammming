@@ -1,5 +1,5 @@
 const clientID = '815d4d83e2bb432e98b76265d0398299';
-const redirectURI = 'http://localhost:3000';
+const redirectURI = 'localhost:3000';
 const state = 'Huyt5j9LKogfRExC';
 
 let accessToken;
@@ -30,13 +30,9 @@ const Spotify = {
 
     async search(term) {
         const accessToken = Spotify.getAccessToken();
-        const headers = { Authorization: `Bearer ${accessToken}`, 'Access-Control-Allow-Origin': redirectURI };
+        const headers = { Authorization: `Bearer ${accessToken}`, mode: 'no-cors' };
 
-        try {
             const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, headers);
-            if (!response.ok) {
-                throw new Error(`Error! status: ${response.status}`);
-            }
 
             const jsonResponse = await response.json();
             if (!jsonResponse.tracks) {
@@ -49,9 +45,6 @@ const Spotify = {
                     album: track.album.name,
                     uri: track.uri
                 }));
-        } catch (error) {
-            console.log(error);
-        }
     },
 
     savePlaylist(pListName, trackURIs) {
@@ -61,7 +54,7 @@ const Spotify = {
         
         const accessToken = Spotify.getAccessToken();
 
-        const headers = { Authorization: `Bearer ${accessToken}`, 'Access-Control-Allow-Origin': redirectURI };
+        const headers = { Authorization: `Bearer ${accessToken}`, mode: 'no-cors' };
 
         let userID;
 
