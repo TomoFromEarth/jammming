@@ -1,5 +1,5 @@
 import React from "react";
-import Spotify from "../../util/Spotify";
+// import Spotify from "../../util/Spotify";
 import './SearchBar.css';
 
 export class SearchBar extends React.Component {
@@ -10,18 +10,17 @@ export class SearchBar extends React.Component {
             term: ''
         }
 
-        this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
-    }
-
-    search() {
-        this.props.onSearch(Spotify.search);
-        console.log(this.props.onSearch(Spotify.search))
-        console.log(`this is a message`)
+        this.search = this.search.bind(this);
     }
 
     handleTermChange(event) {
         this.setState({ term: event.target.value });
+    }
+
+    search() {
+        this.props.onSearch(this.state.term);
+        // console.log(this.props.onSearch(this.state.term))
     }
 
     render() {
