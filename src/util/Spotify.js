@@ -1,5 +1,5 @@
 const clientID = '815d4d83e2bb432e98b76265d0398299';
-const redirectURI = 'http://localhost:3000';
+const redirectURI = 'http://tomos_jammming_app.surge.sh';
 
 let accessToken;
 
